@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="panel-body">
+    <table class="table table-responsive">
+        
+        <% @cart.line_items.each do |item| %>
+        <tr>
+        <td><%= item.quantity %> &times; </td><td><%= item.product.title %></td><td><%= number_to_currency(item.total_price) %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>
+
+<%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Keep Shopping', store_index_url , class:"btn btn-primary" %>
